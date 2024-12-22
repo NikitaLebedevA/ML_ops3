@@ -10,6 +10,7 @@ test data - для обучения моделей
 
 predict data - для предсказания
 
-Тесты запускаем как: /n
-cd app /n
-pytest test_streamlit_app.py
+Тесты запускаем как:
+
+1. cd app
+2. pytest test_streamlit_app.py
