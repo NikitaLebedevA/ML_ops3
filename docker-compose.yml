@@ -1,0 +1,66 @@
+version: '3.11.7'
+
+services:
+  fastapi_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: fastapi_container
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"  # FastAPI
+      - "8501:8501"  # Streamlit
+    depends_on:
+      - minio
+      - clearml
+    environment:
+      - S3_ENDPOINT=http://minio:9000
+      - S3_ACCESS_KEY=minioadmin
+      - S3_SECRET_KEY=minioadmin
+      - S3_BUCKET=datasets
+      - CLEARML_WEB_HOST=http://clearml:8080
+      - CLEARML_API_ACCESS_KEY=PET4KFZO73KEZM1U5HJZ9SICWRPB8Q
+      - CLEARML_API_SECRET_KEY=k_6Wveeg6_3iPixuzxNhM5yrFZ45Ifmu30rRoy5XRC1AQwP7HViPtPIkcBe9luZmDiI
+      - DVC_REMOTE_URL=s3://datasets
+    volumes:
+      - ./app:/app
+      - ./dvc_repo:/app/dvc_repo
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - app_network
+
+  minio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: minio_base
+    container_name: fastapi_minio
+    ports:
+      - "9000:9000"
+    volumes:
+      - minio_data:/data
+      - minio_data:/models
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    entrypoint: /bin/sh -c "minio server /data & sleep 10 && mc alias set myminio http://localhost:9000 minioadmin minioadmin && mc mb myminio/datasets || echo 'Bucket already exists' && wait"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  minio_data:
+  clearml_data:
+  clearml_config:

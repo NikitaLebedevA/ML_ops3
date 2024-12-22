@@ -1,0 +1,6 @@
+{
+    "model_name": "LogisticRegression_2.0",
+    "hyperparameters": {
+        "random_state": 0
+    }
+}

@@ -1,0 +1,356 @@
+2024-12-21 02:17:17,124 - ERROR - Ошибка при добавлении модели
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 70, in <module>
+    response = requests.post(
+NameError: name 'requests' is not defined
+2024-12-21 11:25:11,879 - ERROR - Общая ошибка
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 223, in <module>
+    df = pd.DataFrame(dataset_data)
+NameError: name 'pd' is not defined
+2024-12-21 11:25:45,711 - ERROR - Общая ошибка
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 240, in <module>
+    buffer = BytesIO()
+NameError: name 'BytesIO' is not defined
+2024-12-21 11:28:03,716 - ERROR - Ошибка при предсказании
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 279, in <module>
+    model = joblib.load(buffer)
+NameError: name 'joblib' is not defined
+2024-12-21 11:28:48,034 - ERROR - Ошибка при предсказании
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 287, in <module>
+    predictions = model.predict(input_df)
+  File "/usr/local/lib/python3.10/site-packages/sklearn/linear_model/_base.py", line 382, in predict
+    scores = self.decision_function(X)
+  File "/usr/local/lib/python3.10/site-packages/sklearn/linear_model/_base.py", line 363, in decision_function
+    X = self._validate_data(X, accept_sparse="csr", reset=False)
+  File "/usr/local/lib/python3.10/site-packages/sklearn/base.py", line 633, in _validate_data
+    out = check_array(X, input_name="X", **check_params)
+  File "/usr/local/lib/python3.10/site-packages/sklearn/utils/validation.py", line 1012, in check_array
+    array = _asarray_with_order(array, order=order, dtype=dtype, xp=xp)
+  File "/usr/local/lib/python3.10/site-packages/sklearn/utils/_array_api.py", line 745, in _asarray_with_order
+    array = numpy.asarray(array, order=order, dtype=dtype)
+  File "/usr/local/lib/python3.10/site-packages/pandas/core/generic.py", line 2153, in __array__
+    arr = np.asarray(values, dtype=dtype)
+TypeError: float() argument must be a string or a real number, not 'dict'
+2024-12-21 13:13:24,374 - ERROR - Ошибка MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 209, in <module>
+    model_response = client.get_object(MINIO_BUCKET_NAME, model_path)
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 1254, in get_object
+    return self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: The specified key does not exist., resource: /datasets/models/LogisticRegression_v1.0.json, request_id: 1813336843ACFCD2, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: models/LogisticRegression_v1.0.json
+2024-12-21 13:13:52,128 - ERROR - Общая ошибка
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 244, in <module>
+    task.set_base_task("train_model")
+AttributeError: 'Task' object has no attribute 'set_base_task'
+2024-12-21 12:49:36,521 - ERROR - Ошибка MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 209, in <module>
+    model_response = client.get_object(MINIO_BUCKET_NAME, model_path)
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 1254, in get_object
+    return self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: The specified key does not exist., resource: /datasets/models/Тестовая модель.json, request_id: 1813321BD1012FC4, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: models/Тестовая модель.json
+2024-12-21 12:50:08,748 - ERROR - Ошибка MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 223, in <module>
+    dataset_response = client.get_object(MINIO_BUCKET_NAME, dataset_path)
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 1254, in get_object
+    return self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: The specified key does not exist., resource: /datasets/datasets/test_data.json.json, request_id: 1813322351F44A96, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/test_data.json.json
+2024-12-21 12:51:09,527 - ERROR - Ошибка MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 289, in <module>
+    model_response = client.get_object(MINIO_BUCKET_NAME, model_path)
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 1254, in get_object
+    return self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: The specified key does not exist., resource: /datasets/trained_models/LogisticRegression_1.0.joblib, request_id: 18133231789B2F73, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: trained_models/LogisticRegression_1.0.joblib
+2024-12-21 12:58:19,796 - ERROR - Ошибка MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 289, in <module>
+    model_response = client.get_object(MINIO_BUCKET_NAME, model_path)
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 1254, in get_object
+    return self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: The specified key does not exist., resource: /datasets/trained_models/LogisticRegression_1.0.joblib, request_id: 18133295A6A2F7AE, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: trained_models/LogisticRegression_1.0.joblib
+2024-12-21 12:58:23,644 - ERROR - Ошибка MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 223, in <module>
+    dataset_response = client.get_object(MINIO_BUCKET_NAME, dataset_path)
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 1254, in get_object
+    return self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: The specified key does not exist., resource: /datasets/datasets/test_data.json.json, request_id: 181332968C091062, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/test_data.json.json
+2024-12-21 13:15:35,978 - ERROR - Ошибка при обучении модели
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 222, in <module>
+    dataset_response = client.get_object(MINIO_BUCKET_NAME, dataset_path)
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 1254, in get_object
+    return self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: The specified key does not exist., resource: /datasets/datasets/datasets/test_data.json.json, request_id: 18133386E7E729A8, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/datasets/test_data.json.json
+2024-12-21 13:16:18,879 - ERROR - Ошибка при обучении модели
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 222, in <module>
+    dataset_response = client.get_object(MINIO_BUCKET_NAME, dataset_path)
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 1254, in get_object
+    return self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: The specified key does not exist., resource: /datasets/datasets/datasets/test_data.json.json, request_id: 18133390E5065C6B, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/datasets/test_data.json.json
+2024-12-21 13:16:44,965 - ERROR - Ошибка при обучении модели
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 222, in <module>
+    dataset_response = client.get_object(MINIO_BUCKET_NAME, dataset_path)
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 1254, in get_object
+    return self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: The specified key does not exist., resource: /datasets/datasets/test_data.json.json, request_id: 18133396F7EB5BA1, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/test_data.json.json
+2024-12-21 13:18:00,550 - ERROR - Ошибка при удалении данных из MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 304, in <module>
+    if not client.stat_object(MINIO_BUCKET_NAME, object_name):
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 2123, in stat_object
+    response = self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: Object does not exist, resource: /datasets/datasets/datasets/test_data.json.json, request_id: 181333A8910B228B, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/datasets/test_data.json.json
+2024-12-21 13:18:04,273 - ERROR - Ошибка при удалении данных из MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 304, in <module>
+    if not client.stat_object(MINIO_BUCKET_NAME, object_name):
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 2123, in stat_object
+    response = self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: Object does not exist, resource: /datasets/datasets/test_data.json.json, request_id: 181333A96EFCE9CA, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/test_data.json.json
+2024-12-21 13:18:05,305 - ERROR - Ошибка при удалении данных из MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 304, in <module>
+    if not client.stat_object(MINIO_BUCKET_NAME, object_name):
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 2123, in stat_object
+    response = self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: Object does not exist, resource: /datasets/datasets/test_data.json.json, request_id: 181333A9AC83076A, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/test_data.json.json
+2024-12-21 13:18:05,737 - ERROR - Ошибка при удалении данных из MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 304, in <module>
+    if not client.stat_object(MINIO_BUCKET_NAME, object_name):
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 2123, in stat_object
+    response = self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: Object does not exist, resource: /datasets/datasets/test_data.json.json, request_id: 181333A9C640C589, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/test_data.json.json
+2024-12-21 13:18:05,880 - ERROR - Ошибка при удалении данных из MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 304, in <module>
+    if not client.stat_object(MINIO_BUCKET_NAME, object_name):
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 2123, in stat_object
+    response = self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: Object does not exist, resource: /datasets/datasets/test_data.json.json, request_id: 181333A9CEC694FE, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/test_data.json.json
+2024-12-21 13:18:06,041 - ERROR - Ошибка при удалении данных из MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 304, in <module>
+    if not client.stat_object(MINIO_BUCKET_NAME, object_name):
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 2123, in stat_object
+    response = self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: Object does not exist, resource: /datasets/datasets/test_data.json.json, request_id: 181333A9D868FF80, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/test_data.json.json
+2024-12-21 13:18:07,757 - ERROR - Ошибка при удалении данных из MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 304, in <module>
+    if not client.stat_object(MINIO_BUCKET_NAME, object_name):
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 2123, in stat_object
+    response = self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: Object does not exist, resource: /datasets/datasets/test_data.json.json, request_id: 181333AA3EA2D36A, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/test_data.json.json
+2024-12-21 13:18:08,781 - ERROR - Ошибка при удалении данных из MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 304, in <module>
+    if not client.stat_object(MINIO_BUCKET_NAME, object_name):
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 2123, in stat_object
+    response = self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: Object does not exist, resource: /datasets/datasets/test_data.json.json, request_id: 181333AA7BA92467, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/test_data.json.json
+2024-12-21 13:18:09,336 - ERROR - Ошибка при удалении данных из MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 304, in <module>
+    if not client.stat_object(MINIO_BUCKET_NAME, object_name):
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 2123, in stat_object
+    response = self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: Object does not exist, resource: /datasets/datasets/test_data.json.json, request_id: 181333AA9CBDC193, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/test_data.json.json
+2024-12-21 13:18:09,906 - ERROR - Ошибка при удалении данных из MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 304, in <module>
+    if not client.stat_object(MINIO_BUCKET_NAME, object_name):
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 2123, in stat_object
+    response = self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: Object does not exist, resource: /datasets/datasets/test_data.json.json, request_id: 181333AABEBB83A4, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/test_data.json.json
+2024-12-21 13:18:52,681 - ERROR - Ошибка при удалении данных из MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 304, in <module>
+    if not client.stat_object(MINIO_BUCKET_NAME, object_name):
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 2123, in stat_object
+    response = self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: Object does not exist, resource: /datasets/datasets/LogisticRegression_1.0.json, request_id: 181333B4B457A0D5, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/LogisticRegression_1.0.json
+2024-12-21 13:19:02,474 - ERROR - Ошибка при удалении данных из MinIO
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 304, in <module>
+    if not client.stat_object(MINIO_BUCKET_NAME, object_name):
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 2123, in stat_object
+    response = self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: Object does not exist, resource: /datasets/datasets/LogisticRegression_1.0.json.json, request_id: 181333B6FBF21DBD, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/LogisticRegression_1.0.json.json
+2024-12-21 13:27:01,724 - ERROR - Ошибка при предсказании
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 273, in <module>
+    model_response = client.get_object(MINIO_BUCKET_NAME, model_file)
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 1254, in get_object
+    return self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: The specified key does not exist., resource: /datasets/trained_models/LogisticRegression_1.0_trained.pkl, request_id: 18133426918DDD2A, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: trained_models/LogisticRegression_1.0_trained.pkl
+2024-12-21 13:28:30,248 - ERROR - Ошибка при обучении модели
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 222, in <module>
+    dataset_response = client.get_object(MINIO_BUCKET_NAME, dataset_path)
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 1254, in get_object
+    return self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: The specified key does not exist., resource: /datasets/datasets/test_data.json.json, request_id: 1813343B2DF5CDD0, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/test_data.json.json
+2024-12-21 13:37:29,473 - ERROR - Ошибка при обучении модели
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 222, in <module>
+    dataset_response = client.get_object(MINIO_BUCKET_NAME, dataset_path)
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 1254, in get_object
+    return self._execute(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 441, in _execute
+    return self._url_open(
+  File "/usr/local/lib/python3.10/site-packages/minio/api.py", line 424, in _url_open
+    raise response_error
+minio.error.S3Error: S3 operation failed; code: NoSuchKey, message: The specified key does not exist., resource: /datasets/datasets/example_dataset.json, request_id: 181334B8BA4B3D98, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: datasets, object_name: datasets/example_dataset.json
+2024-12-21 13:43:33,070 - ERROR - Ошибка при выполнении предсказания
+Traceback (most recent call last):
+  File "/app/streamlit_app.py", line 273, in <module>
+    model = joblib.load(model_response)
+  File "/usr/local/lib/python3.10/site-packages/joblib/numpy_pickle.py", line 647, in load
+    with _read_fileobject(fobj, filename, mmap_mode) as fobj:
+  File "/usr/local/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/usr/local/lib/python3.10/site-packages/joblib/numpy_pickle_utils.py", line 149, in _read_fileobject
+    compressor = _detect_compressor(fileobj)
+  File "/usr/local/lib/python3.10/site-packages/joblib/numpy_pickle_utils.py", line 98, in _detect_compressor
+    fileobj.seek(0)
+io.UnsupportedOperation: seek
+2024-12-21 14:24:06,665 - WARNING - Retrying (Retry(total=237, connect=238, read=239, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa9523d00>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/tasks.get_all
+2024-12-21 14:24:12,961 - WARNING - Retrying (Retry(total=237, connect=237, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0f6c400>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/events.add_batch
+2024-12-21 14:24:14,736 - WARNING - Retrying (Retry(total=236, connect=237, read=239, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff54e6fbe0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/tasks.get_all
+2024-12-21 14:24:20,983 - WARNING - Retrying (Retry(total=236, connect=236, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0f6df00>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/events.add_batch
+2024-12-21 14:24:30,767 - WARNING - Retrying (Retry(total=235, connect=236, read=239, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0c62320>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/tasks.get_all
+2024-12-21 15:18:13,724 - WARNING - Retrying (Retry(total=235, connect=235, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0f23dc0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/events.add_batch
+2024-12-21 15:18:39,787 - WARNING - Retrying (Retry(total=234, connect=235, read=239, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff54e6d090>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/tasks.get_all
+2024-12-21 15:22:24,597 - WARNING - Retrying (Retry(total=237, connect=237, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff54e6fb20>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/tasks.get_all
+2024-12-21 15:22:40,810 - WARNING - Retrying (Retry(total=236, connect=236, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0bed840>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /v2.23/tasks.get_all
+2024-12-21 15:23:04,925 - WARNING - Retrying (Retry(total=235, connect=235, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0bef490>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /v2.23/tasks.get_all
+2024-12-21 15:23:14,215 - WARNING - Retrying (Retry(total=237, connect=237, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0f22800>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /v2.23/events.add_batch
+2024-12-21 15:23:30,304 - WARNING - Retrying (Retry(total=236, connect=236, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0f22230>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /v2.23/events.add_batch
+2024-12-21 15:23:45,049 - WARNING - Retrying (Retry(total=234, connect=234, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff777000a0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /v2.23/tasks.get_all
+2024-12-21 15:23:54,486 - WARNING - Retrying (Retry(total=235, connect=235, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0f6ee90>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /v2.23/events.add_batch
+2024-12-21 15:24:34,716 - WARNING - Retrying (Retry(total=234, connect=234, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0f6da80>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /v2.23/events.add_batch
+2024-12-21 15:24:57,228 - WARNING - Retrying (Retry(total=233, connect=233, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa8b043d0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /v2.23/tasks.get_all
+2024-12-21 15:25:46,818 - WARNING - Retrying (Retry(total=233, connect=233, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0f6f2b0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /v2.23/events.add_batch
+2024-12-21 15:27:05,343 - WARNING - Retrying (Retry(total=232, connect=232, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff54ecbf70>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /v2.23/tasks.get_all
+2024-12-21 16:28:08,588 - WARNING - Retrying (Retry(total=237, connect=237, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0b627a0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/tasks.get_all
+2024-12-21 16:28:15,095 - WARNING - Retrying (Retry(total=237, connect=237, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0f6c250>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/events.add_batch
+2024-12-21 16:28:16,613 - WARNING - Retrying (Retry(total=236, connect=236, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0b61270>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/tasks.get_all
+2024-12-21 16:28:23,121 - WARNING - Retrying (Retry(total=236, connect=236, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0f6d090>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/events.add_batch
+2024-12-21 16:28:32,641 - WARNING - Retrying (Retry(total=235, connect=235, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0b60550>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/tasks.get_all
+2024-12-21 16:28:39,151 - WARNING - Retrying (Retry(total=235, connect=235, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0f6efb0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/events.add_batch
+2024-12-21 16:29:04,685 - WARNING - Retrying (Retry(total=234, connect=234, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa099e1d0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/tasks.get_all
+2024-12-21 16:29:11,196 - WARNING - Retrying (Retry(total=234, connect=234, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffa0f6c6a0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/events.add_batch
+2024-12-22 12:10:23,635 - WARNING - Retrying (Retry(total=237, connect=237, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff98708890>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/tasks.get_all
+2024-12-22 12:10:23,635 - WARNING - Retrying (Retry(total=237, connect=237, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff4dd50ed0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/events.add_batch
+2024-12-22 12:49:41,056 - WARNING - Retrying (Retry(total=237, connect=237, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff4dd32fd0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/events.add_batch
+2024-12-22 13:07:58,059 - WARNING - Retrying (Retry(total=237, connect=237, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff986ffa10>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/tasks.get_all
+2024-12-22 13:07:58,570 - WARNING - Retrying (Retry(total=237, connect=237, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff4dd53590>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/events.add_batch
+2024-12-22 13:08:06,077 - WARNING - Retrying (Retry(total=236, connect=236, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff986fe190>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/tasks.get_all
+2024-12-22 13:08:06,580 - WARNING - Retrying (Retry(total=236, connect=236, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff4dd33710>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/events.add_batch
+2024-12-22 13:08:22,093 - WARNING - Retrying (Retry(total=235, connect=235, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff986fc610>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/tasks.get_all
+2024-12-22 13:08:22,588 - WARNING - Retrying (Retry(total=235, connect=235, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff4dd85c50>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/events.add_batch
+2024-12-22 13:08:54,103 - WARNING - Retrying (Retry(total=234, connect=234, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff986fd0d0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/tasks.get_all
+2024-12-22 13:08:54,597 - WARNING - Retrying (Retry(total=234, connect=234, read=240, redirect=240, status=240)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffff4dd84910>: Failed to establish a new connection: [Errno -2] Name or service not known')': /v2.23/events.add_batch
